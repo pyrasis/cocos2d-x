@@ -69,6 +69,53 @@ void MutiTouchTestLayer::registerWithTouchDispatcher(void)
     Director::getInstance()->getTouchDispatcher()->addStandardDelegate(this, 0);
 }
 
+#ifdef CC_PLATFORM_TIZEN
+
+void MutiTouchTestLayer::ccTouchesBegan(Set *touches, Event *pEvent)
+{
+    SetIterator iter = touches->begin();
+    for (; iter != touches->end(); iter++)
+    {
+        Touch* touch = (Touch*)(*iter);
+        TouchPoint* touchPoint = TouchPoint::touchPointWithParent(this);
+        Point location = touch->getLocation();
+
+        touchPoint->setTouchPos(location);
+        touchPoint->setTouchColor(*s_TouchColors[touch->getID()]);
+
+        addChild(touchPoint);
+        s_dic.setObject(touchPoint, touch->getID());
+    }
+
+
+}
+
+void MutiTouchTestLayer::ccTouchesMoved(Set *touches, Event *pEvent)
+{
+    SetIterator iter = touches->begin();
+    for (; iter != touches->end(); iter++)
+    {
+        Touch* touch = (Touch*)(*iter);
+        TouchPoint* touchPoint = (TouchPoint*)s_dic.objectForKey(touch->getID());
+        Point location = touch->getLocation();
+        touchPoint->setTouchPos(location);
+    }
+}
+
+void MutiTouchTestLayer::ccTouchesEnded(Set *touches, Event *pEvent)
+{
+    SetIterator iter = touches->begin();
+    for (; iter != touches->end(); iter++)
+    {
+        Touch* touch = (Touch*)(*iter);
+        TouchPoint* touchPoint = (TouchPoint*)s_dic.objectForKey(touch->getID());
+        removeChild(touchPoint, true);
+        s_dic.removeObjectForKey(touch->getID());
+    }
+}
+
+#else
+
 void MutiTouchTestLayer::ccTouchesBegan(Set *touches, Event  *event)
 {
 
@@ -109,6 +156,8 @@ void MutiTouchTestLayer::ccTouchesEnded(Set *touches, Event  *event)
         s_dic.removeObjectForKey(touch->getID());
     }
 }
+
+#endif // CC_PLATFORM_TIZEN
 
 void MutiTouchTestLayer::ccTouchesCancelled(Set  *touches, Event  *event)
 {
