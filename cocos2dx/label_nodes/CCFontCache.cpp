@@ -64,6 +64,24 @@ std::string CCFontCache::generateFontName(const char *fontFileName, int size)
 
 bool CCFontCache::releaseFontDefinition(FontDefinitionTTF *def)
 {
+#ifdef CC_PLATFORM_TIZEN
+    if (def)
+    {
+    	std::map<std::string, FontDefinitionTTF *>::iterator it;
+
+    	for( it = _fontsMap.begin(); it != _fontsMap.end(); it++ )
+        {
+            if ( it->second == def )
+            {
+                it->second->release();
+                _fontsMap.erase(it->first);
+                return true;
+            }
+        }
+    }
+
+    return false;
+#else
     if (def)
     {
         for( auto &item: _fontsMap)
@@ -78,6 +96,7 @@ bool CCFontCache::releaseFontDefinition(FontDefinitionTTF *def)
     }
     
     return false;
+#endif
 }
 
 const char * CCFontCache::getGlyphCollection(GlyphCollection glyphs)

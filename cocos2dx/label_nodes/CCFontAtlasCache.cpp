@@ -118,6 +118,30 @@ std::string FontAtlasCache::generateFontName(const char *fontFileName, int size,
 
 bool FontAtlasCache::releaseFontAtlas(FontAtlas *atlas)
 {
+#if CC_PLATFORM_TIZEN
+    if (atlas)
+    {
+        std::map<std::string, FontAtlas *>::iterator it;
+        for( it = _atlasMap.begin(); it != _atlasMap.end(); it++ )
+        {
+            if ( it->second == atlas )
+            {
+                bool removeFromList = false;
+                if(it->second->isSingleReference())
+                    removeFromList = true;
+
+                it->second->release();
+
+                if (removeFromList)
+                    _atlasMap.erase(it->first);
+
+                return true;
+            }
+        }
+    }
+
+    return false;
+#else
     if (atlas)
     {
         for( auto &item: _atlasMap)
