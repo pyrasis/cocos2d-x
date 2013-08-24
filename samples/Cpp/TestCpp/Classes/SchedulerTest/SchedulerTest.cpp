@@ -694,6 +694,21 @@ void SchedulerUpdate::onEnter()
 
 void SchedulerUpdate::removeUpdates(float dt)
 {
+#ifdef CC_PLATFORM_TIZEN
+    auto children = getChildren();
+    Node* node;
+    Object* pObject;
+    CCARRAY_FOREACH(children, pObject)
+    {
+        node = static_cast<Node*>(pObject);
+
+        if (! node)
+        {
+            break;
+        }
+        node->unscheduleAllSelectors();
+    }
+#else
     auto children = getChildren();
     Node* node;
 
@@ -707,6 +722,7 @@ void SchedulerUpdate::removeUpdates(float dt)
         }
         node->unscheduleAllSelectors();
     }
+#endif
 }
 
 std::string SchedulerUpdate::title()
