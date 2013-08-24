@@ -30,24 +30,16 @@ NS_CC_BEGIN
 
 std::map<std::string, FontAtlas *> FontAtlasCache::_atlasMap;
 
-
 FontAtlas * FontAtlasCache::getFontAtlasTTF(const char *fontFileName, int size, GlyphCollection glyphs, const char *customGlyphs)
 {
     std::string atlasName = generateFontName(fontFileName, size, glyphs);
-    FontAtlas *tempAtlas = _atlasMap[atlasName];
+    FontAtlas  *tempAtlas = _atlasMap[atlasName];
     
     if ( !tempAtlas )
     {
         tempAtlas = FontAtlasFactory::createAtlasFromTTF(fontFileName, size, glyphs, customGlyphs);
-        
         if (tempAtlas)
-        {
             _atlasMap[atlasName] = tempAtlas;
-        }
-        else
-        {
-            return nullptr;
-        }
     }
     else
     {
@@ -65,15 +57,8 @@ FontAtlas * FontAtlasCache::getFontAtlasFNT(const char *fontFileName)
     if ( !tempAtlas )
     {
         tempAtlas = FontAtlasFactory::createAtlasFromFNT(fontFileName);
-        
         if (tempAtlas)
-        {
             _atlasMap[atlasName] = tempAtlas;
-        }
-        else
-        {
-            return nullptr;
-        }
     }
     else
     {
@@ -89,7 +74,6 @@ std::string FontAtlasCache::generateFontName(const char *fontFileName, int size,
     
     switch (theGlyphs)
     {
-            
         case GlyphCollection::DYNAMIC:
             tempName.append("_DYNAMIC_");
         break;
@@ -110,15 +94,15 @@ std::string FontAtlasCache::generateFontName(const char *fontFileName, int size,
             break;
     }
     
+    // std::to_string is not supported on android, using std::stringstream instead.
     std::stringstream ss;
     ss << size;
-    // std::to_string is not supported on android, using std::stringstream instead.
     return  tempName.append(ss.str());
 }
 
 bool FontAtlasCache::releaseFontAtlas(FontAtlas *atlas)
 {
-#if CC_PLATFORM_TIZEN
+#ifdef CC_PLATFORM_TIZEN
     if (atlas)
     {
         std::map<std::string, FontAtlas *>::iterator it;
@@ -144,7 +128,7 @@ bool FontAtlasCache::releaseFontAtlas(FontAtlas *atlas)
 #else
     if (atlas)
     {
-        for( auto &item: _atlasMap)
+        for( auto &item: _atlasMap )
         {
             if ( item.second == atlas )
             {
@@ -163,6 +147,7 @@ bool FontAtlasCache::releaseFontAtlas(FontAtlas *atlas)
     }
     
     return false;
+#endif
 }
 
 NS_CC_END
