@@ -65,8 +65,6 @@ OspForm::OnTerminating(void)
     if (__pKeypad)
         __pKeypad->Destroy();
 
-    Director::getInstance()->getAccelerometer()->stopSensor();
-
     return r;
 }
 
