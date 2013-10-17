@@ -276,9 +276,17 @@ void EventDispatcher::dispatchEvent(Event* event, bool forceSortListeners)
     auto iter = _listeners.find(event->getType());
     if (iter != _listeners.end())
     {
-        auto listenerList = iter->second;
-        for (auto& item : *listenerList)
+        auto listenerList = *iter->second;
+
+#ifdef CC_PLATFORM_TIZEN
+        std::vector<EventListenerItem*>::itator it;
+        for (it = listenerList.begin(); it != listenerList.end(); ++it)
         {
+            auto item = *it;
+#else
+        for (auto& item : listenerList)
+        {
+#endif
             CCASSERT(item, "listener item is invalid.");
 
             event->setCurrentTarget(item->node);
@@ -342,8 +350,15 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
         {
             bool isSwallowed = false;
 
+#ifdef CC_PLATFORM_TIZEN
+            std::vector<EventDispatcher::EventListenerItem*>::itator it;
+            for (it = oneByOnelisteners.begin(); it != oneByOnelisteners.end(); ++it)
+            {
+                auto item = *it;
+#else
             for (auto& item : oneByOnelisteners)
             {
+#endif
                 // Skip if the listener was removed.
                 if (item->listener == nullptr)
                     continue;
@@ -436,8 +451,15 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
     //
     if (allInOnelisteners.size() > 0 && mutableTouches.size() > 0)
     {
+#ifdef CC_PLATFORM_TIZEN
+        std::vector<EventDispatcher::EventListenerItem*>::itator it;
+        for (it = allInOnelisteners.begin(); it != allInOnelisteners.end(); ++it)
+        {
+            auto item = *it;
+#else
         for (auto& item : allInOnelisteners)
         {
+#endif
             // Skip if the listener was removed.
             if (item->listener == nullptr)
                 continue;
@@ -523,8 +545,15 @@ void EventDispatcher::updateListenerItems()
     {
         std::vector<EventListenerItem*>* listenerList = nullptr;
         
+#ifdef CC_PLATFORM_TIZEN
+        std::vector<EventListenerItem*>::itator it;
+        for (it = _toAddedListeners.begin(); it != _toAddedListeners.end(); ++it)
+        {
+            auto item = *it;
+#else
         for (auto& item : _toAddedListeners)
         {
+#endif
             auto itr = _listeners.find(item->listener->_type);
             if (itr == _listeners.end())
             {

@@ -778,7 +778,7 @@ void Node::sortAllChildren()
     }
 #else
     if( _reorderChildDirty ) {
-        std::sort( std::begin(*_children), std::end(*_children), nodeComparisonLess );
+        std::sort((*_children).begin(), (*_children).end(), nodeComparisonLess);
         _reorderChildDirty = false;
     }
 #endif
@@ -1313,8 +1313,15 @@ void Node::removeAllEventListeners()
     
     auto eventListenersCopy = _eventlisteners;
     
+#ifdef CC_PLATFORM_TIZEN
+    std::set<EventListener*>::iterator it;
+    for (it = eventListenersCopy.begin(); it != eventListenersCopy.end(); ++it)
+    {
+        auto listener = *it;
+#else
     for (auto& listener : eventListenersCopy)
     {
+#endif
         dispatcher->removeEventListener(listener);
     }
 }
@@ -1323,8 +1330,15 @@ void Node::setDirtyForAllEventListeners()
 {
     auto dispatcher = EventDispatcher::getInstance();
     
+#ifdef CC_PLATFORM_TIZEN
+    std::set<EventListener*>::itator it;
+    for (it = _eventlisteners.begin(); it != _eventlisteners.end(); ++it)
+    {
+        auto listener = *it;
+#else
     for (auto& listener : _eventlisteners)
     {
+#endif
         dispatcher->setDirtyForEventType(listener->_type, true);
     }
 }

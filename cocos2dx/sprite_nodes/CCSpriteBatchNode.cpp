@@ -264,7 +264,7 @@ void SpriteBatchNode::sortAllChildren()
             _children->fastSetObject(tempI, j+1);
         }
 #else
-        std::sort(std::begin(*_children), std::end(*_children), nodeComparisonLess);
+        std::sort(_children->begin(), _children->end(), nodeComparisonLess);
 #endif
 
         //sorted now check all children
@@ -709,7 +709,7 @@ SpriteBatchNode * SpriteBatchNode::addSpriteWithoutQuad(Sprite*child, int z, int
     child->setAtlasIndex(z);
 
     // XXX: optimize with a binary search
-    auto it = std::begin(_descendants);
+    auto it = _descendants.begin();
     std::for_each(_descendants.begin(), _descendants.end(), [&](Sprite *sprite) {
         if(sprite->getAtlasIndex() >= z)
             std::next(it);

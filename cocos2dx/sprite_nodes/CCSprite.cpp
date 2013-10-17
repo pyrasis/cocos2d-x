@@ -724,7 +724,7 @@ void Sprite::sortAllChildren()
             _children->fastSetObject(tempI, j+1);
         }
 #else
-        std::sort(std::begin(*_children), std::end(*_children), nodeComparisonLess);
+        std::sort(_children->begin(), _children->end(), nodeComparisonLess);
 #endif
 
         if ( _batchNode)

@@ -73,6 +73,7 @@ public:
         VERTICAL,
         BOTH
     };
+
     /**
      * Returns an autoreleased scroll view object.
      *

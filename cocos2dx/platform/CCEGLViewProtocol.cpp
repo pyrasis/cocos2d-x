@@ -349,8 +349,15 @@ void EGLViewProtocol::handleTouchesOfEndOrCancel(EventTouch::EventCode eventCode
     touchEvent._eventCode = eventCode;
     EventDispatcher::getInstance()->dispatchEvent(&touchEvent);
     
+#ifdef CC_PLATFORM_TIZEN
+    std::vector<Touch*>::itator it:
+    for (it = touchEvent._touches.begin(); it != touchEvent._touches.end(); ++it)
+    {
+        auto touch = *it;
+#else
     for (auto& touch : touchEvent._touches)
     {
+#endif
         // delete the touch object.
         delete touch;
     }
