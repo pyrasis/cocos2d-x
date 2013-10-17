@@ -23,6 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 
+#include "cocos2d.h"
 #include "CCOspForm.h"
 #include "CCDirector.h"
 #include "CCEGLView.h"
@@ -53,6 +54,9 @@ OspForm::OnInitializing(void)
 {
     AddTouchEventListener(*this);
     SetMultipointTouchEnabled(true);
+
+    SetFormBackEventListener(this);
+    SetFormMenuEventListener(this);
 
     return E_SUCCESS;
 }
@@ -113,6 +117,19 @@ OspForm::OnTouchReleased(const Control& source, const  Tizen::Graphics::Point& c
     float x = currentPosition.x;
     float y = currentPosition.y;
     Director::getInstance()->getOpenGLView()->handleTouchesEnd(1, &id, &x, &y);
+}
+
+void
+OspForm::OnFormBackRequested(Tizen::Ui::Controls::Form& source)
+{
+    cocos2d::EventKeyboard event(cocos2d::EventKeyboard::KeyCode::KEY_BACKSPACE, false);
+    cocos2d::EventDispatcher::getInstance()->dispatchEvent(&event);
+}
+
+void
+OspForm::OnFormMenuRequested(Tizen::Ui::Controls::Form& source)
+{
+    source.SetShowState(false);
 }
 
 void OspForm::OnTextValueChanged(const Tizen::Ui::Control& source)

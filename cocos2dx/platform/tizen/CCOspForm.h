@@ -35,6 +35,8 @@ class OspForm
     : public Tizen::Ui::Controls::Form
     , public Tizen::Ui::ITouchEventListener
     , public Tizen::Ui::ITextEventListener
+    , public Tizen::Ui::Controls::IFormBackEventListener
+    , public Tizen::Ui::Controls::IFormMenuEventListener
 {
 public:
     /**
@@ -60,6 +62,12 @@ public:
     // ITextEventListener
     virtual void OnTextValueChanged(const Tizen::Ui::Control& source);
     virtual void OnTextValueChangeCanceled(const Tizen::Ui::Control& source);
+
+    // IFormBackEventListener
+    virtual void OnFormBackRequested(Tizen::Ui::Controls::Form& source);
+
+    // IFormBackEventListener
+    virtual void OnFormMenuRequested(Tizen::Ui::Controls::Form& source);
 
     void ShowKeypad(const char* pMessage, Tizen::Ui::Controls::KeypadStyle keypadStyle, Tizen::Ui::Controls::KeypadInputModeCategory keypadCategory, bool bSingleLineEnabled, bool bTextPrediction, int nMaxLength, EditTextCallback pfEditTextCallback, void* pCtx);
     void ShowKeypad();
