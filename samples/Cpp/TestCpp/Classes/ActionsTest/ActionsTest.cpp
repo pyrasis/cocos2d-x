@@ -1404,10 +1404,10 @@ void ActionStacked::runActionsInSprite(Sprite *sprite)
 void ActionStacked::onTouchesEnded(const std::vector<Touch*>& touches, Event* event)
 {
 #ifdef CC_PLATFORM_TIZEN
-    SetIterator it;
+    std::vector<Touch*>::const_iterator it;
     Touch* touch;
 
-    for( it = touches->begin(); it != touches->end(); it++)
+    for( it = touches.begin(); it != touches.end(); it++)
     {
         touch = (Touch*)(*it);
 
@@ -1419,10 +1419,7 @@ void ActionStacked::onTouchesEnded(const std::vector<Touch*>& touches, Event* ev
         addNewSpriteWithCoords( location );
     }
 #else
-    for ( auto &item: *touches ) {
-
-        const Touch *touch = static_cast<Touch*>(item);
-
+    for ( auto &touch: touches ) {
         auto location = touch->getLocation();
         addNewSpriteWithCoords( location );
     }

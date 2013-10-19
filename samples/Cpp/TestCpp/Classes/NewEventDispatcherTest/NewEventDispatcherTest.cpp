@@ -191,7 +191,11 @@ void TouchableSpriteTest::onEnter()
         EventDispatcher::getInstance()->removeListenersForEventType(EventTouch::EVENT_TYPE);
         
         auto nextItem = MenuItemFont::create("Next", [=](Object* sender){
+#ifdef CC_PLATFORM_TIZEN
+            this->nextCallback(nullptr);
+#else
             nextCallback(nullptr);
+#endif
         });
         
         nextItem->setFontSizeObj(16);

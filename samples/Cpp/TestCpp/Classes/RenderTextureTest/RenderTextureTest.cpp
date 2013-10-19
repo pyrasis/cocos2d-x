@@ -365,9 +365,9 @@ void RenderTextureZbuffer::onTouchesBegan(const std::vector<Touch*>& touches, Ev
 {
 
 #ifdef CC_PLATFORM_TIZEN
-    SetIterator iter;
+    std::vector<Touch*>::const_iterator iter;
     Touch *touch;
-    for (iter = touches->begin(); iter != touches->end(); ++iter)
+    for (iter = touches.begin(); iter != touches.end(); ++iter)
     {
         touch = (Touch *)(*iter);
         Point location = touch->getLocation();
@@ -383,9 +383,9 @@ void RenderTextureZbuffer::onTouchesBegan(const std::vector<Touch*>& touches, Ev
         sp9->setPosition(location);
     }
 #else
-    for (auto &item: *touches)
+    for (auto &item: touches)
     {
-        auto touch = static_cast<Touch*>(item);
+        auto touch = item;
         auto location = touch->getLocation();
 
         sp1->setPosition(location);
@@ -404,9 +404,9 @@ void RenderTextureZbuffer::onTouchesBegan(const std::vector<Touch*>& touches, Ev
 void RenderTextureZbuffer::onTouchesMoved(const std::vector<Touch*>& touches, Event* event)
 {
 #ifdef CC_PLATFORM_TIZEN
-    SetIterator iter;
+    std::vector<Touch*>::const_iterator iter;
     Touch *touch;
-    for (iter = touches->begin(); iter != touches->end(); ++iter)
+    for (iter = touches.begin(); iter != touches.end(); ++iter)
     {
         touch = (Touch *)(*iter);
         Point location = touch->getLocation();
@@ -422,9 +422,9 @@ void RenderTextureZbuffer::onTouchesMoved(const std::vector<Touch*>& touches, Ev
         sp9->setPosition(location);
     }
 #else
-    for (auto &item: *touches)
+    for (auto &item: touches)
     {
-        auto touch = static_cast<Touch*>(item);
+        auto touch = item;
         auto location = touch->getLocation();
 
         sp1->setPosition(location);
@@ -711,14 +711,14 @@ SpriteRenderTextureBug::SimpleSprite* SpriteRenderTextureBug::addNewSpriteWithCo
 void SpriteRenderTextureBug::onTouchesEnded(const std::vector<Touch*>& touches, Event* event)
 {
 #ifdef CC_PLATFORM_TIZEN
-    SetIterator iter = touches->begin();
-    for(; iter != touches->end(); ++iter)
+    std::vector<Touch*>::const_iterator iter;
+    for(; iter != touches.end(); ++iter)
     {
         Point location = ((Touch*)(*iter))->getLocation();
         addNewSpriteWithCoords(location);
     }
 #else
-    for (auto &item: *touches)
+    for (auto &touch: touches)
     {
         auto location = touch->getLocation();
         addNewSpriteWithCoords(location);

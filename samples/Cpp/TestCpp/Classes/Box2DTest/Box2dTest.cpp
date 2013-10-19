@@ -209,8 +209,15 @@ void Box2DTestLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event* e
 {
     //Add a new body/atlas sprite at the touched location
 
+#ifdef CC_PLATFORM_TIZEN
+    std::vector<Touch*>::const_iterator it;
+    for (it = touches.begin(); it != touches.end(); ++it)
+    {
+        auto touch = *it;
+#else
     for (auto& touch : touches)
     {
+#endif
         if(!touch)
             break;
 

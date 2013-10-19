@@ -267,10 +267,18 @@ void TouchesPerformTest3::onEnter()
         
         CC_PROFILER_DISPLAY_TIMERS();
         
+#ifdef CC_PLATFORM_TIZEN
+        std::vector<Touch*>::iterator it;
+        for (it = touches.begin(); it != touches.end(); it++)
+        {
+            (*it)->release();
+        }
+#else
         for (auto& touch : touches)
         {
             touch->release();
         }
+#endif
     });
     
     menuItem->setPosition(Point(0, -20));

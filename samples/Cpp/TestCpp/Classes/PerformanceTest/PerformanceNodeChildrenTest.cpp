@@ -289,9 +289,15 @@ void IterateSpriteSheetForLoop::update(float dt)
 
     CC_PROFILER_START(this->profilerName());
 
+#ifdef CC_PLATFORM_TIZEN
+    for( auto object = children->begin(); object != children->end(); ++object )
+    {
+        auto o = static_cast<Object*>(*object);
+#else
     for( const auto &object : *children )
     {
         auto o = static_cast<Object*>(object);
+#endif
         auto sprite = static_cast<Sprite*>(o);
         sprite->setVisible(false);
     }
@@ -364,7 +370,11 @@ void IterateSpriteSheetIterator::update(float dt)
 
     CC_PROFILER_START(this->profilerName());
 
+#ifdef CC_PLATFORM_TIZEN
+    for( auto it = children->begin(); it != children->end(); ++it)
+#else
     for( auto it=std::begin(*children); it != std::end(*children); ++it)
+#endif
     {
         auto obj = static_cast<Object*>(*it);
         auto sprite = static_cast<Sprite*>(obj);
@@ -407,7 +417,11 @@ void CallFuncsSpriteSheetForEach::update(float dt)
         static_cast<Node*>( static_cast<Object*>(obj) )->getPosition();
     });
 #else
+#ifdef CC_PLATFORM_TIZEN
+    std::for_each(children->begin(), children->end(), [](Object* obj) {
+#else
     std::for_each(std::begin(*children), std::end(*children), [](Object* obj) {
+#endif
         static_cast<Node*>(obj)->getPosition();
     });
 #endif

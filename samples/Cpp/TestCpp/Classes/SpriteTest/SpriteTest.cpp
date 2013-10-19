@@ -244,10 +244,10 @@ void Sprite1::addNewSpriteWithCoords(Point p)
 void Sprite1::onTouchesEnded(const std::vector<Touch*>& touches, Event* event)
 {
 #ifdef CC_PLATFORM_TIZEN
-    SetIterator it;
+    std::vector<Touch*>::const_iterator it;
     Touch* touch;
 
-    for( it = touches->begin(); it != touches->end(); it++)
+    for( it = touches.begin(); it != touches.end(); it++)
     {
         touch = (Touch*)(*it);
 
@@ -259,9 +259,8 @@ void Sprite1::onTouchesEnded(const std::vector<Touch*>& touches, Event* event)
         addNewSpriteWithCoords( location );
     }
 #else
-    for (auto &item: *touches)
+    for (auto touch: touches)
     {
-        auto touch = static_cast<Touch*>(item);
         auto location = touch->getLocation();
     
         addNewSpriteWithCoords( location );
@@ -328,10 +327,10 @@ void SpriteBatchNode1::addNewSpriteWithCoords(Point p)
 void SpriteBatchNode1::onTouchesEnded(const std::vector<Touch*>& touches, Event* event)
 {
 #ifdef CC_PLATFORM_TIZEN
-    SetIterator it;
+    std::vector<Touch*>::const_iterator it;
     Touch* touch;
 
-    for( it = touches->begin(); it != touches->end(); it++)
+    for( it = touches.begin(); it != touches.end(); it++)
     {
         touch = (Touch*)(*it);
 
@@ -343,7 +342,7 @@ void SpriteBatchNode1::onTouchesEnded(const std::vector<Touch*>& touches, Event*
         addNewSpriteWithCoords( location );
     }
 #else
-    for (auto &item: *touches)
+    for (auto &touch: touches)
     {
         auto location = touch->getLocation();
             

@@ -760,8 +760,15 @@ ConvertToNode::ConvertToNode()
 
 void ConvertToNode::onTouchesEnded(const std::vector<Touch*>& touches, Event *event)
 {
+#ifdef CC_PLATFORM_TIZEN
+    std::vector<Touch*>::const_iterator it;
+    for( it = touches.begin(); it != touches.end(); ++it)
+    {
+        auto touch = *it;
+#else
     for( auto& touch : touches)
     {
+#endif
         auto location = touch->getLocation();
 
         for( int i = 0; i < 3; i++)
