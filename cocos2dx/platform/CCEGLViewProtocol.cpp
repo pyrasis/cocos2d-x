@@ -350,7 +350,7 @@ void EGLViewProtocol::handleTouchesOfEndOrCancel(EventTouch::EventCode eventCode
     EventDispatcher::getInstance()->dispatchEvent(&touchEvent);
     
 #ifdef CC_PLATFORM_TIZEN
-    std::vector<Touch*>::itator it:
+    std::vector<Touch*>::iterator it;
     for (it = touchEvent._touches.begin(); it != touchEvent._touches.end(); ++it)
     {
         auto touch = *it;

@@ -1331,7 +1331,7 @@ void Node::setDirtyForAllEventListeners()
     auto dispatcher = EventDispatcher::getInstance();
     
 #ifdef CC_PLATFORM_TIZEN
-    std::set<EventListener*>::itator it;
+    std::set<EventListener*>::iterator it;
     for (it = _eventlisteners.begin(); it != _eventlisteners.end(); ++it)
     {
         auto listener = *it;

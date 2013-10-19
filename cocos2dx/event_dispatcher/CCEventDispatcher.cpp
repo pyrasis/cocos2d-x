@@ -279,7 +279,7 @@ void EventDispatcher::dispatchEvent(Event* event, bool forceSortListeners)
         auto listenerList = *iter->second;
 
 #ifdef CC_PLATFORM_TIZEN
-        std::vector<EventListenerItem*>::itator it;
+        std::vector<EventListenerItem*>::iterator it;
         for (it = listenerList.begin(); it != listenerList.end(); ++it)
         {
             auto item = *it;
@@ -351,7 +351,7 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
             bool isSwallowed = false;
 
 #ifdef CC_PLATFORM_TIZEN
-            std::vector<EventDispatcher::EventListenerItem*>::itator it;
+            std::vector<EventDispatcher::EventListenerItem*>::iterator it;
             for (it = oneByOnelisteners.begin(); it != oneByOnelisteners.end(); ++it)
             {
                 auto item = *it;
@@ -452,7 +452,7 @@ void EventDispatcher::dispatchTouchEvent(EventTouch* event)
     if (allInOnelisteners.size() > 0 && mutableTouches.size() > 0)
     {
 #ifdef CC_PLATFORM_TIZEN
-        std::vector<EventDispatcher::EventListenerItem*>::itator it;
+        std::vector<EventDispatcher::EventListenerItem*>::iterator it;
         for (it = allInOnelisteners.begin(); it != allInOnelisteners.end(); ++it)
         {
             auto item = *it;
@@ -546,7 +546,7 @@ void EventDispatcher::updateListenerItems()
         std::vector<EventListenerItem*>* listenerList = nullptr;
         
 #ifdef CC_PLATFORM_TIZEN
-        std::vector<EventListenerItem*>::itator it;
+        std::vector<EventListenerItem*>::iterator it;
         for (it = _toAddedListeners.begin(); it != _toAddedListeners.end(); ++it)
         {
             auto item = *it;
