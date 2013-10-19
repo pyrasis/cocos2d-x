@@ -10,6 +10,7 @@
 #include <string>
 #include "CCDirector.h"
 #include "platform/CCFileUtils.h"
+#include "CCEGLView.h"
 
 NS_CC_BEGIN
 
@@ -47,16 +48,25 @@ int Application::run()
 		return 0;
 	}
 
-
-	for (;;) {
-		long iLastTime = getCurrentMillSecond();
-		Director::getInstance()->mainLoop();
+	EGLView* pMainWnd = EGLView::getInstance();
+    
+    while (!pMainWnd->windowShouldClose())
+    {
+    	long iLastTime = getCurrentMillSecond();
+        Director::getInstance()->mainLoop();
+        pMainWnd->pollEvents();
 		long iCurTime = getCurrentMillSecond();
 		if (iCurTime-iLastTime<_animationInterval){
 			usleep((_animationInterval - iCurTime+iLastTime)*1000);
 		}
-
-	}
+    }
+    /* Only work on Desktop
+    *  Director::mainLoop is really one frame logic
+    *  when we want to close the window, we should call Director::end();
+    *  then call Director::mainLoop to do release of internal resources
+    */
+    Director::getInstance()->end();
+    Director::getInstance()->mainLoop();
 	return -1;
 }
 

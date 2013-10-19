@@ -55,11 +55,17 @@ public:
      * Creates a slider with a given background sprite and a progress bar and a
      * thumb item.
      *
-     * @see initWithBackgroundSprite:progressSprite:thumbMenuItem:
+     * @see initWithSprites
      */
     static ControlSlider* create(Sprite * backgroundSprite, Sprite* pogressSprite, Sprite* thumbSprite);
-
+    /**
+     * @js ctor
+     */
     ControlSlider();
+    /**
+     * @js NA
+     * @lua NA
+     */
     virtual ~ControlSlider();
 
     /** 
@@ -86,15 +92,15 @@ protected:
     void sliderMoved(Point location);
     void sliderEnded(Point location);
 
-    virtual bool ccTouchBegan(Touch* touch, Event* pEvent);
-    virtual void ccTouchMoved(Touch *pTouch, Event *pEvent);
-    virtual void ccTouchEnded(Touch *pTouch, Event *pEvent);
+    virtual bool onTouchBegan(Touch* touch, Event* pEvent);
+    virtual void onTouchMoved(Touch *pTouch, Event *pEvent);
+    virtual void onTouchEnded(Touch *pTouch, Event *pEvent);
 
     /** Returns the value for the given location. */
     float valueForLocation(Point location);
 
     //maunally put in the setters
-    /** Contains the receiver¡¯s current value. */
+    /** Contains the receiver's current value. */
     CC_SYNTHESIZE_READONLY(float, _value, Value);
 
     /** Contains the minimum value of the receiver.

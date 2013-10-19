@@ -29,6 +29,7 @@
 #include "CCGeometry.h"
 #include "CCDirector.h"
 #import "CCDirectorCaller.h"
+#include "CCEGLView.h"
 
 NS_CC_BEGIN
 
@@ -48,11 +49,26 @@ Application::~Application()
 
 int Application::run()
 {
-    if (/*initInstance() &&*/ applicationDidFinishLaunching()) 
+    if(!applicationDidFinishLaunching())
     {
-        [[CCDirectorCaller sharedDirectorCaller] startMainLoop];
+        return 0;
     }
-    return 0;
+    EGLView* pMainWnd = EGLView::getInstance();
+    
+    while (!pMainWnd->windowShouldClose())
+    {
+        Director::getInstance()->mainLoop();
+        pMainWnd->pollEvents();
+    }
+
+    /* Only work on Desktop
+    *  Director::mainLoop is really one frame logic
+    *  when we want to close the window, we should call Director::end();
+    *  then call Director::mainLoop to do release of internal resources
+    */
+    Director::getInstance()->end();
+    Director::getInstance()->mainLoop();
+    return true;
 }
 
 void Application::setAnimationInterval(double interval)

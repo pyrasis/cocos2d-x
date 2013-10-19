@@ -26,6 +26,7 @@ THE SOFTWARE.
 #define __CCOBJECT_H__
 
 #include "cocoa/CCDataVisitor.h"
+#include "ccMacros.h"
 
 #ifdef EMSCRIPTEN
 #include <GLES2/gl2.h>
@@ -40,7 +41,6 @@ NS_CC_BEGIN
 
 class Object;
 class Node;
-class Event;
 
 /** Interface that defines how to clone an object */
 class CC_DLL Clonable
@@ -48,6 +48,10 @@ class CC_DLL Clonable
 public:
 	/** returns a copy of the object */
     virtual Clonable* clone() const = 0;
+    /**
+     * @js NA
+     * @lua NA
+     */
 	virtual ~Clonable() {};
 
     /** returns a copy of the object.
@@ -64,28 +68,118 @@ public:
 class CC_DLL Object
 {
 public:
-    // object id, ScriptSupport need public _ID
+    /// object id, ScriptSupport need public _ID
     unsigned int        _ID;
-    // Lua reference id
+    /// Lua reference id
     int                 _luaID;
 protected:
-    // count of references
+    /// count of references
     unsigned int        _reference;
-    // count of autorelease
+    /// count of autorelease
     unsigned int        _autoReleaseCount;
 public:
-    Object(void);
-    virtual ~Object(void);
+    /**
+     * Constructor
+     *
+     * The object's reference count is 1 after construction.
+     * @js NA
+     */
+    Object();
     
-    void release(void);
-    void retain(void);
-    Object* autorelease(void);
-    bool isSingleReference(void) const;
-    unsigned int retainCount(void) const;
-    virtual bool isEqual(const Object* pObject);
+    /**
+     * @js NA
+     * @lua NA
+     */
+    virtual ~Object();
+    
+    /**
+     * Release the ownership immediately.
+     *
+     * This decrements the object's reference count.
+     *
+     * If the reference count reaches 0 after the descrement, this object is
+     * destructed.
+     *
+     * @see retain, autorelease
+     * @js NA
+     */
+    inline void release()
+    {
+        CCASSERT(_reference > 0, "reference count should greater than 0");
+        --_reference;
 
+        if (_reference == 0)
+            delete this;
+    }
+
+    /**
+     * Retains the ownership.
+     *
+     * This increases the object's reference count.
+     *
+     * @see release, autorelease
+     * @js NA
+     */
+    inline void retain()
+    {
+        CCASSERT(_reference > 0, "reference count should greater than 0");
+        ++_reference;
+    }
+
+    /**
+     * Release the ownership sometime soon automatically.
+     *
+     * This descrements the object's reference count at the end of current
+     * autorelease pool block.
+     *
+     * If the reference count reaches 0 after the descrement, this object is
+     * destructed.
+     *
+     * @returns The object itself.
+     *
+     * @see AutoreleasePool, retain, release
+     * @js NA
+     * @lua NA
+     */
+    Object* autorelease();
+
+    /**
+     * Returns a boolean value that indicates whether there is only one
+     * reference to the object. That is, whether the reference count is 1.
+     *
+     * @returns Whether the object's reference count is 1.
+     * @js NA
+     */
+    bool isSingleReference() const;
+
+    /**
+     * Returns the object's current reference count.
+     *
+     * @returns The object's reference count.
+     * @js NA
+     */
+    unsigned int retainCount() const;
+
+    /**
+     * Returns a boolean value that indicates whether this object and a given
+     * object are equal.
+     *
+     * @param object    The object to be compared to this object.
+     *
+     * @returns True if this object and @p object are equal, otherwise false.
+     * @js NA
+     * @lua NA
+     */
+    virtual bool isEqual(const Object* object);
+    /**
+     * @js NA
+     * @lua NA
+     */
     virtual void acceptVisitor(DataVisitor &visitor);
-
+    /**
+     * @js NA
+     * @lua NA
+     */
     virtual void update(float dt) {CC_UNUSED_PARAM(dt);};
     
     friend class AutoreleasePool;
@@ -98,7 +192,6 @@ typedef void (Object::*SEL_CallFuncN)(Node*);
 typedef void (Object::*SEL_CallFuncND)(Node*, void*);
 typedef void (Object::*SEL_CallFuncO)(Object*);
 typedef void (Object::*SEL_MenuHandler)(Object*);
-typedef void (Object::*SEL_EventHandler)(Event*);
 typedef int (Object::*SEL_Compare)(Object*);
 
 #define schedule_selector(_SELECTOR) static_cast<cocos2d::SEL_SCHEDULE>(&_SELECTOR)

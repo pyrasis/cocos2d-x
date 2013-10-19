@@ -12,9 +12,7 @@ int main(int argc, char **argv)
 {
     // create the application instance
     AppDelegate app;
-
-    auto eglView = EGLView::getInstance();
-    eglView->setFrameSize(800, 480);
-
+    EGLView eglView;
+    eglView.init("SimpleGame",900,640);
     return Application::getInstance()->run();
 }

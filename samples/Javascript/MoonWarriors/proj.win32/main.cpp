@@ -24,9 +24,8 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
     // create the application instance
     AppDelegate app;
-    auto eglView = EGLView::getInstance();
-    eglView->setViewName("MoonWarriors");
-    eglView->setFrameSize(320, 480);
+    EGLView eglView;
+    eglView.init("MoonWarriors", 480, 720);
 
     int ret = Application::getInstance()->run();
 

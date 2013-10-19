@@ -53,7 +53,14 @@ NS_CC_EXT_BEGIN
 class Scale9Sprite : public NodeRGBA
 {
 public:
+    /**
+     * @js ctor
+     */
     Scale9Sprite();
+    /**
+     * @js NA
+     * @lua NA
+     */
     virtual ~Scale9Sprite();
 
 public:
@@ -63,7 +70,7 @@ public:
      * Creates a 9-slice sprite with a texture file, a delimitation zone and
      * with the specified cap insets.
      *
-     * @see initWithFile:rect:centerRegion:
+     * @see initWithFile(const char *file, Rect rect, Rect capInsets)
      */
     static Scale9Sprite* create(const char* file, Rect rect,  Rect capInsets);
 
@@ -71,7 +78,7 @@ public:
      * Creates a 9-slice sprite with a texture file. The whole texture will be
      * broken down into a 3×3 grid of equal blocks.
      *
-     * @see initWithFile:capInsets:
+     * @see initWithFile(Rect capInsets, const char *file)
      */
     static Scale9Sprite* create(Rect capInsets, const char* file);
 
@@ -79,7 +86,7 @@ public:
      * Creates a 9-slice sprite with a texture file and a delimitation zone. The
      * texture will be broken down into a 3×3 grid of equal blocks.
      *
-     * @see initWithFile:rect:
+     * @see initWithFile(const char *file, Rect rect)
      */
     static Scale9Sprite* create(const char* file, Rect rect);
 
@@ -87,7 +94,7 @@ public:
      * Creates a 9-slice sprite with a texture file. The whole texture will be
      * broken down into a 3×3 grid of equal blocks.
      *
-     * @see initWithFile:
+     * @see initWithFile(const char *file)
      */
     static Scale9Sprite* create(const char* file);
 
@@ -97,7 +104,7 @@ public:
      * to resize the sprite will all it's 9-slice goodness intract.
      * It respects the anchorPoint too.
      *
-     * @see initWithSpriteFrame:
+     * @see initWithSpriteFrame(SpriteFrame *spriteFrame)
      */
     static Scale9Sprite* createWithSpriteFrame(SpriteFrame* spriteFrame);
 
@@ -107,7 +114,7 @@ public:
      * to resize the sprite will all it's 9-slice goodness intract.
      * It respects the anchorPoint too.
      *
-     * @see initWithSpriteFrame:centerRegion:
+     * @see initWithSpriteFrame(SpriteFrame *spriteFrame, Rect capInsets)
      */
     static Scale9Sprite* createWithSpriteFrame(SpriteFrame* spriteFrame, Rect capInsets);
 
@@ -117,7 +124,7 @@ public:
      * to resize the sprite will all it's 9-slice goodness intract.
      * It respects the anchorPoint too.
      *
-     * @see initWithSpriteFrameName:
+     * @see initWithSpriteFrameName(const char *spriteFrameName)
      */
     static Scale9Sprite* createWithSpriteFrameName(const char*spriteFrameName);
 
@@ -128,7 +135,7 @@ public:
      * to resize the sprite will all it's 9-slice goodness intract.
      * It respects the anchorPoint too.
      *
-     * @see initWithSpriteFrameName:centerRegion:
+     * @see initWithSpriteFrameName(const char *spriteFrameName, Rect capInsets)
      */
     static Scale9Sprite* createWithSpriteFrameName(const char*spriteFrameName, Rect capInsets);
 
@@ -247,6 +254,10 @@ public:
 
     // overrides
     virtual void setContentSize(const Size & size) override;
+    /**
+     * @js NA
+     * @lua NA
+     */
     virtual void visit() override;
     virtual void setOpacityModifyRGB(bool bValue) override;
     virtual bool isOpacityModifyRGB(void) const override;

@@ -60,7 +60,10 @@ public:
     CC_DEPRECATED_ATTRIBUTE static void purgeConfiguration();
 
 public:
-
+    /**
+     * @js NA
+     * @lua NA
+     */
 	virtual ~Configuration();
 
     /** OpenGL Max texture size. */
@@ -149,7 +152,7 @@ protected:
     GLint           _maxTextureSize;
     GLint           _maxModelviewStackDepth;
     bool            _supportsPVRTC;
-    bool            _supportsETC;
+    bool            _supportsETC1;
     bool            _supportsS3TC;
     bool            _supportsATITC;
     bool            _supportsNPOT;

@@ -33,6 +33,9 @@
 #import "CCES2Renderer.h"
 #import "OpenGL_Internal.h"
 
+#if !defined(COCOS2D_DEBUG) || COCOS2D_DEBUG == 0
+#define NSLog(...)       do {} while (0)
+#endif
 
 @implementation CCES2Renderer
 
@@ -207,7 +210,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"cocos2d: deallocing %@", self);
+//    CCLOGINFO("deallocing CCES2Renderer: %p", self);
 
     // Tear down GL
     if (defaultFramebuffer_) {
