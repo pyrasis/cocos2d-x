@@ -7,8 +7,11 @@
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.cdt.managedbuilder.core.genmakebuilder</name>
-			<triggers>clean,full,incremental,</triggers>
 			<arguments>
+				<dictionary>
+					<key>?children?</key>
+					<value>?name?=outputEntries\|?children?=?name?=entry\\\\\\\|\\\|?name?=entry\\\\\\\|\\\|?name?=entry\\\\\\\|\\\|\||</value>
+				</dictionary>
 				<dictionary>
 					<key>?name?</key>
 					<value></value>
@@ -31,7 +34,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>${workspace_loc:/cocos2dx/Debug-Tizen-Device}</value>
+					<value>${workspace_loc:/cocos2dx/Debug-Tizen-Emulator}</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
@@ -43,7 +46,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
-					<value>false</value>
+					<value>true</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
@@ -178,22 +181,17 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>src/event_dispatcher</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>src/include</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>src/kazmath</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>src/keyboard_dispatcher</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>src/keypad_dispatcher</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -219,6 +217,11 @@
 		</link>
 		<link>
 			<name>src/particle_nodes</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>src/physics</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -259,11 +262,6 @@
 		</link>
 		<link>
 			<name>src/tilemap_parallax_nodes</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>src/touch_dispatcher</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -598,6 +596,126 @@
 			<locationURI>PARENT-1-PROJECT_LOC/effects/CCGrid.h</locationURI>
 		</link>
 		<link>
+			<name>src/event_dispatcher/CCEvent.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEvent.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEvent.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEvent.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventAcceleration.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventAcceleration.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventAcceleration.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventAcceleration.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventCustom.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventCustom.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventCustom.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventCustom.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventDispatcher.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventDispatcher.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventDispatcher.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventDispatcher.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventKeyboard.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventKeyboard.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventKeyboard.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventKeyboard.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListener.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListener.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListener.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListener.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListenerAcceleration.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListenerAcceleration.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListenerAcceleration.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListenerAcceleration.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListenerCustom.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListenerCustom.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListenerCustom.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListenerCustom.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListenerKeyboard.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListenerKeyboard.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListenerKeyboard.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListenerKeyboard.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListenerTouch.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListenerTouch.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventListenerTouch.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventListenerTouch.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventTouch.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventTouch.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCEventTouch.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCEventTouch.h</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCTouch.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCTouch.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/event_dispatcher/CCTouch.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/event_dispatcher/CCTouch.h</locationURI>
+		</link>
+		<link>
 			<name>src/include/CCDeprecated.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/CCDeprecated.h</locationURI>
@@ -623,11 +741,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/include/ccMacros.h</locationURI>
 		</link>
 		<link>
-			<name>src/include/ccTypeInfo.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/include/ccTypeInfo.h</locationURI>
-		</link>
-		<link>
 			<name>src/include/ccTypes.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/include/ccTypes.h</locationURI>
@@ -646,36 +759,6 @@
 			<name>src/kazmath/src</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>src/keyboard_dispatcher/CCKeyboardDispatcher.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/keyboard_dispatcher/CCKeyboardDispatcher.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/keyboard_dispatcher/CCKeyboardDispatcher.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/keyboard_dispatcher/CCKeyboardDispatcher.h</locationURI>
-		</link>
-		<link>
-			<name>src/keypad_dispatcher/CCKeypadDelegate.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/keypad_dispatcher/CCKeypadDelegate.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/keypad_dispatcher/CCKeypadDelegate.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/keypad_dispatcher/CCKeypadDelegate.h</locationURI>
-		</link>
-		<link>
-			<name>src/keypad_dispatcher/CCKeypadDispatcher.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/keypad_dispatcher/CCKeypadDispatcher.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/keypad_dispatcher/CCKeypadDispatcher.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/keypad_dispatcher/CCKeypadDispatcher.h</locationURI>
 		</link>
 		<link>
 			<name>src/label_nodes/CCFont.cpp</name>
@@ -973,9 +1056,69 @@
 			<locationURI>PARENT-1-PROJECT_LOC/particle_nodes/firePngData.h</locationURI>
 		</link>
 		<link>
-			<name>src/platform/CCAccelerometerDelegate.h</name>
+			<name>src/physics/Box2D</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsBody.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/platform/CCAccelerometerDelegate.h</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsBody.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsBody.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsBody.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsContact.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsContact.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsContact.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsContact.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsJoint.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsJoint.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsJoint.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsJoint.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsSetting.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsSetting.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsShape.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsShape.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsShape.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsShape.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsWorld.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsWorld.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/CCPhysicsWorld.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/CCPhysicsWorld.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>src/platform/CCApplicationProtocol.h</name>
@@ -1053,17 +1196,7 @@
 			<locationURI>PARENT-1-PROJECT_LOC/platform/CCThread.h</locationURI>
 		</link>
 		<link>
-			<name>src/platform/atitc</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>src/platform/etc</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>src/platform/s3tc</name>
+			<name>src/platform/third_party</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -1478,41 +1611,6 @@
 			<locationURI>PARENT-1-PROJECT_LOC/tilemap_parallax_nodes/CCTileMapAtlas.h</locationURI>
 		</link>
 		<link>
-			<name>src/touch_dispatcher/CCTouch.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/touch_dispatcher/CCTouch.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/touch_dispatcher/CCTouch.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/touch_dispatcher/CCTouch.h</locationURI>
-		</link>
-		<link>
-			<name>src/touch_dispatcher/CCTouchDelegateProtocol.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/touch_dispatcher/CCTouchDelegateProtocol.h</locationURI>
-		</link>
-		<link>
-			<name>src/touch_dispatcher/CCTouchDispatcher.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/touch_dispatcher/CCTouchDispatcher.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/touch_dispatcher/CCTouchDispatcher.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/touch_dispatcher/CCTouchDispatcher.h</locationURI>
-		</link>
-		<link>
-			<name>src/touch_dispatcher/CCTouchHandler.cpp</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/touch_dispatcher/CCTouchHandler.cpp</locationURI>
-		</link>
-		<link>
-			<name>src/touch_dispatcher/CCTouchHandler.h</name>
-			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/touch_dispatcher/CCTouchHandler.h</locationURI>
-		</link>
-		<link>
 			<name>src/kazmath/include/kazmath</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -1588,39 +1686,119 @@
 			<locationURI>PARENT-1-PROJECT_LOC/kazmath/src/vec4.c</locationURI>
 		</link>
 		<link>
-			<name>src/platform/atitc/atitc.cpp</name>
+			<name>src/physics/Box2D/CCPhysicsBodyInfo.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/atitc/atitc.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsBodyInfo.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/platform/atitc/atitc.h</name>
+			<name>src/physics/Box2D/CCPhysicsBodyInfo.h</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/atitc/atitc.h</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsBodyInfo.h</locationURI>
 		</link>
 		<link>
-			<name>src/platform/etc/etc1.cpp</name>
+			<name>src/physics/Box2D/CCPhysicsContactInfo.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/etc/etc1.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsContactInfo.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/platform/etc/etc1.h</name>
+			<name>src/physics/Box2D/CCPhysicsContactInfo.h</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/etc/etc1.h</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsContactInfo.h</locationURI>
 		</link>
 		<link>
-			<name>src/platform/s3tc/s3tc.cpp</name>
+			<name>src/physics/Box2D/CCPhysicsHelper.h</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/s3tc/s3tc.cpp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsHelper.h</locationURI>
 		</link>
 		<link>
-			<name>src/platform/s3tc/s3tc.h</name>
+			<name>src/physics/Box2D/CCPhysicsJointInfo.cpp</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/s3tc/s3tc.h</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsJointInfo.cpp</locationURI>
 		</link>
 		<link>
-			<name>src/platform/tizen/.CCCommon.cpp.swp</name>
+			<name>src/physics/Box2D/CCPhysicsJointInfo.h</name>
 			<type>1</type>
-			<locationURI>PARENT-1-PROJECT_LOC/platform/tizen/.CCCommon.cpp.swp</locationURI>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsJointInfo.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/Box2D/CCPhysicsShapeInfo.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsShapeInfo.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/Box2D/CCPhysicsShapeInfo.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsShapeInfo.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/Box2D/CCPhysicsWorldInfo.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsWorldInfo.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/Box2D/CCPhysicsWorldInfo.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/Box2D/CCPhysicsWorldInfo.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsBodyInfo.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsBodyInfo.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsBodyInfo.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsBodyInfo.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsContactInfo.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsContactInfo.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsContactInfo.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsContactInfo.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsHelper.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsHelper.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsJointInfo.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsJointInfo.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsJointInfo.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsJointInfo.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsShapeInfo.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsShapeInfo.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsShapeInfo.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsShapeInfo.h</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsWorldInfo.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsWorldInfo.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/physics/chipmunk/CCPhysicsWorldInfo.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/physics/chipmunk/CCPhysicsWorldInfo.h</locationURI>
+		</link>
+		<link>
+			<name>src/platform/third_party/common</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
 			<name>src/platform/tizen/CCAccelerometer.cpp</name>
@@ -1903,6 +2081,21 @@
 			<locationURI>PARENT-1-PROJECT_LOC/kazmath/src/GL/matrix.c</locationURI>
 		</link>
 		<link>
+			<name>src/platform/third_party/common/atitc</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>src/platform/third_party/common/etc</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>src/platform/third_party/common/s3tc</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>src/kazmath/include/kazmath/GL/mat4stack.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/kazmath/include/kazmath/GL/mat4stack.h</locationURI>
@@ -1911,6 +2104,36 @@
 			<name>src/kazmath/include/kazmath/GL/matrix.h</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/kazmath/include/kazmath/GL/matrix.h</locationURI>
+		</link>
+		<link>
+			<name>src/platform/third_party/common/atitc/atitc.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/atitc/atitc.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/platform/third_party/common/atitc/atitc.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/atitc/atitc.h</locationURI>
+		</link>
+		<link>
+			<name>src/platform/third_party/common/etc/etc1.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/etc/etc1.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/platform/third_party/common/etc/etc1.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/etc/etc1.h</locationURI>
+		</link>
+		<link>
+			<name>src/platform/third_party/common/s3tc/s3tc.cpp</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/s3tc/s3tc.cpp</locationURI>
+		</link>
+		<link>
+			<name>src/platform/third_party/common/s3tc/s3tc.h</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/platform/third_party/common/s3tc/s3tc.h</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
