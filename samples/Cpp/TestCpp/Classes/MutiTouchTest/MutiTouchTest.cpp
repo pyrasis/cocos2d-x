@@ -1,7 +1,7 @@
 #include "MutiTouchTest.h"
 
 
-static const Color3B* s_TouchColors[CC_MAX_TOUCHES] = {
+static const Color3B* s_TouchColors[EventTouch::MAX_TOUCHES] = {
     &Color3B::YELLOW,
     &Color3B::BLUE,
     &Color3B::GREEN,
@@ -14,7 +14,7 @@ class TouchPoint : public Node
 public:
     TouchPoint()
     {
-        setShaderProgram(ShaderCache::getInstance()->programForKey(GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR));
+        setShaderProgram(ShaderCache::getInstance()->getProgram(GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR));
     }
 
     virtual void draw()
@@ -57,6 +57,11 @@ bool MutiTouchTestLayer::init()
     if (Layer::init())
     {
         setTouchEnabled(true);
+        
+        auto title = LabelTTF::create("Please touch the screen!", "", 24);
+        title->setPosition(VisibleRect::top()+Point(0, -40));
+        addChild(title);
+        
         return true;
     }
     return false;
@@ -64,64 +69,18 @@ bool MutiTouchTestLayer::init()
 
 static Dictionary s_dic;
 
-void MutiTouchTestLayer::registerWithTouchDispatcher(void)
+void MutiTouchTestLayer::onTouchesBegan(const std::vector<Touch*>& touches, Event  *event)
 {
-    Director::getInstance()->getTouchDispatcher()->addStandardDelegate(this, 0);
-}
-
 #ifdef CC_PLATFORM_TIZEN
-
-void MutiTouchTestLayer::ccTouchesBegan(Set *touches, Event *pEvent)
-{
-    SetIterator iter = touches->begin();
-    for (; iter != touches->end(); iter++)
+    std::vector<Touch*>::const_iterator it;
+    for ( it = touches.begin(); it != touches.end(); ++it)
     {
-        Touch* touch = (Touch*)(*iter);
-        TouchPoint* touchPoint = TouchPoint::touchPointWithParent(this);
-        Point location = touch->getLocation();
-
-        touchPoint->setTouchPos(location);
-        touchPoint->setTouchColor(*s_TouchColors[touch->getID()]);
-
-        addChild(touchPoint);
-        s_dic.setObject(touchPoint, touch->getID());
-    }
-
-
-}
-
-void MutiTouchTestLayer::ccTouchesMoved(Set *touches, Event *pEvent)
-{
-    SetIterator iter = touches->begin();
-    for (; iter != touches->end(); iter++)
-    {
-        Touch* touch = (Touch*)(*iter);
-        TouchPoint* touchPoint = (TouchPoint*)s_dic.objectForKey(touch->getID());
-        Point location = touch->getLocation();
-        touchPoint->setTouchPos(location);
-    }
-}
-
-void MutiTouchTestLayer::ccTouchesEnded(Set *touches, Event *pEvent)
-{
-    SetIterator iter = touches->begin();
-    for (; iter != touches->end(); iter++)
-    {
-        Touch* touch = (Touch*)(*iter);
-        TouchPoint* touchPoint = (TouchPoint*)s_dic.objectForKey(touch->getID());
-        removeChild(touchPoint, true);
-        s_dic.removeObjectForKey(touch->getID());
-    }
-}
-
+        auto touch = *it;
 #else
-
-void MutiTouchTestLayer::ccTouchesBegan(Set *touches, Event  *event)
-{
-
-    for ( auto &item: *touches )
+    for ( auto &item: touches )
     {
-        auto touch = static_cast<Touch*>(item);
+        auto touch = item;
+#endif
         auto touchPoint = TouchPoint::touchPointWithParent(this);
         auto location = touch->getLocation();
 
@@ -131,37 +90,47 @@ void MutiTouchTestLayer::ccTouchesBegan(Set *touches, Event  *event)
         addChild(touchPoint);
         s_dic.setObject(touchPoint, touch->getID());
     }
-    
-
 }
 
-void MutiTouchTestLayer::ccTouchesMoved(Set *touches, Event  *event)
+void MutiTouchTestLayer::onTouchesMoved(const std::vector<Touch*>& touches, Event  *event)
 {
-    for( auto &item: *touches)
+#ifdef CC_PLATFORM_TIZEN
+    std::vector<Touch*>::const_iterator it;
+    for ( it = touches.begin(); it != touches.end(); ++it)
     {
-        auto touch = static_cast<Touch*>(item);
+        auto touch = *it;
+#else
+    for( auto &item: touches)
+    {
+        auto touch = item;
+#endif
         auto pTP = static_cast<TouchPoint*>(s_dic.objectForKey(touch->getID()));
         auto location = touch->getLocation();
         pTP->setTouchPos(location);
     }
 }
 
-void MutiTouchTestLayer::ccTouchesEnded(Set *touches, Event  *event)
+void MutiTouchTestLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event  *event)
 {
-    for ( auto &item: *touches )
+#ifdef CC_PLATFORM_TIZEN
+    std::vector<Touch*>::const_iterator it;
+    for ( it = touches.begin(); it != touches.end(); ++it)
     {
-        auto touch = static_cast<Touch*>(item);
+        auto touch = *it;
+#else
+    for( auto &item: touches)
+    {
+        auto touch = item;
+#endif
         auto pTP = static_cast<TouchPoint*>(s_dic.objectForKey(touch->getID()));
         removeChild(pTP, true);
         s_dic.removeObjectForKey(touch->getID());
     }
 }
 
-#endif // CC_PLATFORM_TIZEN
-
-void MutiTouchTestLayer::ccTouchesCancelled(Set  *touches, Event  *event)
+void MutiTouchTestLayer::onTouchesCancelled(const std::vector<Touch*>& touches, Event  *event)
 {
-    ccTouchesEnded(touches, event);
+    onTouchesEnded(touches, event);
 }
 
 void MutiTouchTestScene::runThisTest()
