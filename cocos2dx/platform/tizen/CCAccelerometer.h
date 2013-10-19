@@ -27,6 +27,7 @@ THE SOFTWARE.
 #define __PLATFORM_TIZEN_CCACCELEROMETER_H__
 
 #include "platform/CCCommon.h"
+#include <ccTypes.h>
 #include <FUix.h>
 #include <functional>
 
