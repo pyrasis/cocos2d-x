@@ -89,6 +89,7 @@ struct {
 #endif
 	{ "TexturePackerEncryption", []() { return new TextureAtlasEncryptionTestScene(); } },
 	{ "TileMapTest", [](){return new TileMapTestScene(); } },
+	{ "TouchPointTest", [](){return new TouchPointTestScene();} },
 	{ "TouchesTest", [](){return new PongScene();} },
 	{ "TransitionsTest", [](){return new TransitionsTestScene();} },
 	{ "UserDefaultTest", []() { return new UserDefaultTestScene(); } },

@@ -15,6 +15,7 @@
 #include "ActionsEaseTest/ActionsEaseTest.h"
 #include "MotionStreakTest/MotionStreakTest.h"
 #include "DrawPrimitivesTest/DrawPrimitivesTest.h"
+#include "TouchPointTest/TouchPointTest.h"
 #include "TouchesTest/TouchesTest.h"
 #include "MenuTest/MenuTest.h"
 #include "ActionManagerTest/ActionManagerTest.h"

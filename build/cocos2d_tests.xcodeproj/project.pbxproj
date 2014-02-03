@@ -643,6 +643,8 @@
 		ED743D1717D099F10004076B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCC747E17C455FD007B692C /* IOKit.framework */; };
 		ED743D1E17D09D070004076B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCC747E17C455FD007B692C /* IOKit.framework */; };
 		EDCC747F17C455FD007B692C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDCC747E17C455FD007B692C /* IOKit.framework */; };
+		FDF06953189F896800E55092 /* TouchPointTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDF06951189F896800E55092 /* TouchPointTest.cpp */; };
+		FDF06954189F896800E55092 /* TouchPointTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FDF06951189F896800E55092 /* TouchPointTest.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1505,6 +1507,8 @@
 		A07A52C11783B01F0073F6A7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS6.1.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		D60AE43317F7FFE100757E4B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		EDCC747E17C455FD007B692C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		FDF06951189F896800E55092 /* TouchPointTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchPointTest.cpp; sourceTree = "<group>"; };
+		FDF06952189F896800E55092 /* TouchPointTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchPointTest.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1781,6 +1785,7 @@
 				1A92D56B18975EA5002F2C16 /* TextureCacheTest */,
 				1A92D56E18975EA5002F2C16 /* TexturePackerEncryptionTest */,
 				1A92D57118975EA5002F2C16 /* TileMapTest */,
+				FDF06950189F896800E55092 /* TouchPointTest */,
 				1A92D57418975EA5002F2C16 /* TouchesTest */,
 				1A92D57B18975EA5002F2C16 /* TransitionsTest */,
 				1A92D57E18975EA5002F2C16 /* UnitTest */,
@@ -3170,6 +3175,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FDF06950189F896800E55092 /* TouchPointTest */ = {
+			isa = PBXGroup;
+			children = (
+				FDF06951189F896800E55092 /* TouchPointTest.cpp */,
+				FDF06952189F896800E55092 /* TouchPointTest.h */,
+			);
+			path = TouchPointTest;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3856,6 +3870,7 @@
 				1A92D69D18975EA6002F2C16 /* ZwoptexTest.cpp in Sources */,
 				1A92D67F18975EA6002F2C16 /* SpineTest.cpp in Sources */,
 				1A92D65318975EA6002F2C16 /* NodeTest.cpp in Sources */,
+				FDF06953189F896800E55092 /* TouchPointTest.cpp in Sources */,
 				1A92D5A918975EA5002F2C16 /* Bug-458.cpp in Sources */,
 				1A92D5BD18975EA5002F2C16 /* CocosDenshionTest.cpp in Sources */,
 				1A92D65D18975EA6002F2C16 /* PerformanceEventDispatcherTest.cpp in Sources */,
@@ -3985,6 +4000,7 @@
 				1A92D5C218975EA5002F2C16 /* ConsoleTest.cpp in Sources */,
 				1A92D5FE18975EA6002F2C16 /* UIListViewTest.cpp in Sources */,
 				1A92D67C18975EA6002F2C16 /* ShaderTest.cpp in Sources */,
+				FDF06954189F896800E55092 /* TouchPointTest.cpp in Sources */,
 				1A92D69618975EA6002F2C16 /* TransitionsTest.cpp in Sources */,
 				1A92D64218975EA6002F2C16 /* KeypadTest.cpp in Sources */,
 				1A92D5C018975EA5002F2C16 /* ConfigurationTest.cpp in Sources */,
